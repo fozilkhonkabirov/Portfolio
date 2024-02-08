@@ -14,7 +14,7 @@ document.querySelector('.form-btn').onclick = function () {
     // айди группы или чата куда будет отправлен смс
     let url = 'https://api.telegram.org/bot' + token + '/sendMessage?chat_id=-1001967396267&text=';
     let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url + 'name:   ' +name + '   email:   ' + email + '   message:   ' + message , true);
+    
     xhttp.send();
 }
 
