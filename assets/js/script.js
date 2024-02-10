@@ -6,7 +6,7 @@
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
 document.querySelector('.form-btn').onclick = function () {
-    let name = document.querySelector('.form-input').value;
+    let name = document.querySelector('#form-input').value;
     let email = document.querySelector('#email').value;
     let message = document.querySelector('#message').value;
     // токен телграм бота
