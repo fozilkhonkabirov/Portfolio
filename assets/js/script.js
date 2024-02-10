@@ -5,20 +5,6 @@
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
-document.querySelector('.form-btn').onclick = function () {
-    let name = document.querySelector('#form-input').value;
-    let email = document.querySelector('#email').value;
-    let message = document.querySelector('#message').value;
-    // токен телграм бота
-    const token = '5909814561:AAEIkLF_wODvCPlYsG3_K5aNlMgfp7rTzik';
-    // айди группы или чата куда будет отправлен смс
-    let url = 'https://api.telegram.org/bot' + token + '/sendMessage?chat_id=-1001967396267&text=';
-    let xhttp = new XMLHttpRequest();
-    
-    xhttp.send();
-}
-
-
 // sidebar variables
 const sidebar = document.querySelector("[data-sidebar]");
 const sidebarBtn = document.querySelector("[data-sidebar-btn]");
@@ -168,3 +154,37 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+
+const forme = document.getElementById('telegram-form');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting normally
+
+            const fullName = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Replace YOUR_BOT_TOKEN with your actual bot token
+            const botToken = '6642106408:AAEHhuY3k_anQxdL-Co0HVInuNUbvkCoZtY';
+            // Replace YOUR_CHAT_ID with your actual chat ID
+            const chatId = '-1001863965272';
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=Full%20Name:%20${fullName}%0AEmail:%20${email}%0AMessage:%20${message}`;
+
+            fetch(url)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log(data);
+                alert('Message sent successfully!');
+                form.reset(); // Clear the form fields after successful submission
+            })
+            .catch(error => {
+                console.error('There was a problem with your fetch operation:', error);
+                alert('Message failed to send. Please try again later.');
+            });
+        });
+
